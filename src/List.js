@@ -16,7 +16,7 @@ const List = ({className, color, name, height, weight, bmi, date, status, id, re
     <div>BMI: {bmi}</div> 
     <div>Date: {date}</div>
     <div>{status}</div>
-    <div onClick={()=>removeData(id)}>delete</div>
+    <div className='delete' onClick={()=>removeData(id)}>delete</div>
  
     </div>
   )
@@ -37,6 +37,11 @@ const StyledList = styled(List)`
  box-shadow:0 1px 2px 2px ${props=>props.color};
  font-size: 22px; 
  color: #424242;
+
+.delete{
+  color: #8B0000;
+  font-weight: 600;
+} 
 } 
 `
 StyledList.displayName = 'List'
