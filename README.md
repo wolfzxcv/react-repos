@@ -1,3 +1,3 @@
 npm i => npm start
 
-or preview on codepen https://codepen.io/nienyingchou/full/YoXNZK
+or preview on codesandbox https://wqbtg.codesandbox.io/
