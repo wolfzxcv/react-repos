@@ -1,26 +1,36 @@
-import React, {useState} from 'react' 
+import React, {useState, useEffect} from 'react' 
 import styled from 'styled-components' 
 import PropTypes from 'prop-types'
+import List from './List'
+import uuid from 'uuid' 
 
-const colorOrange = '#424242'
-const colorGray = '#FFD366'
+const orange = '#FFD366'
+const gray = '#424242'
 
 const App = ({className}) => {
-  const [input, setInput] = useState({height:'',weight:''})
-//  const [display, setDisplay] = useState([])
+  const [input, setInput] = useState({name:'', height:'', weight:''})
+  const [display, setDisplay] = useState([])
+
+  useEffect(() => {
+    setDisplay(JSON.parse(localStorage.getItem("LS-BMI-data")) || [])
+  },[]) 
+   
+  const setLocalStorage = dataSaveInLS => {
+    setDisplay(dataSaveInLS)
+    localStorage.setItem("LS-BMI-data", JSON.stringify(dataSaveInLS)) 
+  } 
  
   const calcu = () => {
-   if( input.height<250 && input.height>90 && input.weight<300 && input.weight>10 ){
+   if( input.height<250 && input.height>90 && input.weight<300 && input.weight>10 && input.name.trim().length>0 ){
     setInput(input)
     const bmi = (input.weight/input.height*100/input.height*100).toFixed(2)
-    const date = new Date().toLocaleDateString()  
-    getResult(input.height, input.weight, bmi, date)  
+    getResult(input.name, input.height, input.weight, bmi)  
   }
     else{
-    alert('please enter correct number')}   
+    alert('please enter valid name and correct number for height/weight')};
   }
  
-  const getResult = (height, weight, bmi, date) => {
+  const getResult = (name, height, weight, bmi) => {
   let options = {
     color: '', 
     status: ''  
@@ -39,7 +49,21 @@ const App = ({className}) => {
     options.color = 'red'; 
     options.status = 'Fedme';  
   }   
-    return alert(`height:${height} weight:${weight} bmi:${bmi} date:${date} color: ${options.color} status: ${options.status}`)     
+    return allData(options.color, name, height, weight, bmi, options.status) 
+    
+    //alert(`name:${name} height:${height} weight:${weight} bmi:${bmi} date:${date} color: ${options.color} status: ${options.status}`)     
+  }
+
+  const allData =(color, name, height, weight, bmi, status) => {
+    const date = new Date().toLocaleDateString() 
+    const newResult = {id: uuid.v4(), color, name, height, weight, bmi, date, status}
+    const dataSaveInLS= [...display, newResult]
+    setLocalStorage(dataSaveInLS)
+  }
+
+  const removeData = id => {  
+    const dataSaveInLS = display.filter( data=> data.id !== id)
+    setLocalStorage(dataSaveInLS)
   }
    
   return (
@@ -48,6 +72,8 @@ const App = ({className}) => {
     <div className='logo'>BMI</div>  
 
     <div>
+    <p>Your name</p>  
+    <input type='text' placeholder='Enter your name' value={input.name} onChange={e=>setInput({...input, name: e.target.value})} />
     <p>Your height / cm</p>  
     <input type='text' placeholder='Enter your height' value={input.height} onChange={e=>setInput({...input, height: e.target.value})} />
     <p>Your weight / kg</p>
@@ -61,8 +87,20 @@ const App = ({className}) => {
      BMI result
     </div>  
 
-    <div className='content'>
-    <div></div>  
+    <div>
+    {display.map(i =>
+    <List 
+    key={i.id}
+    id={i.id}
+    color={i.color}
+    name={i.name}
+    height={i.height}
+    weight={i.weight}
+    bmi={i.bmi}
+    date={i.date}
+    status={i.status} 
+    removeData={removeData}
+    />)}
     </div>  
 
     <footer><div className='footer-logo'>BMI</div></footer>
@@ -75,7 +113,7 @@ App.propTypes = {
 }
  
 const StyledApp = styled(App)`
- 
+ background: #FFFACD;	
  display: flex;
  flex-direction: column;
  font-family: cursive;
@@ -86,8 +124,8 @@ header{
   align-items: center;
   text-align: center;
   width: 100vw;
-  height: 300px;
-  background-color: ${colorOrange};
+  height: 350px;
+  background-color: ${gray};
 }  
 
 .logo{
@@ -95,18 +133,18 @@ header{
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${colorOrange};
-  background-color: ${colorGray};
+  color: ${gray};
+  background-color: ${orange};
   width: 120px;
   height: 120px;
   border-radius: 20%;
-  border: 1px solid ${colorGray};
+  border: 1px solid ${orange};
   box-shadow:0 1px 2px 2px blue;
 }
 
 p{
   font-size: 18px;
-  color: ${colorGray}; 
+  color: ${orange}; 
 }
 
 input {
@@ -114,7 +152,7 @@ input {
  height: 40px;
  &[type=text]{
   width:100%;
-  border:2px solid ${colorGray};
+  border:2px solid ${orange};
   background:rgba(255,255,255,0.18);
   color:#FFF;
   outline:0;
@@ -129,12 +167,12 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${colorOrange};
-  background-color: ${colorGray};
+  color: ${gray};
+  background-color: ${orange};
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  border: 1px solid ${colorGray};
+  border: 1px solid ${orange};
   &:hover, &:active{
   box-shadow:0 1px 6px 3px rgba(255,196,50,0.64);
   background:rgba(222,168,33,1);
@@ -147,11 +185,7 @@ input {
   align-items: center;
   height: 100px;
   font-size: 24px;
-  color: ${colorOrange};
-}
-
-.content{
-  font-size: 24px;
+  color: ${gray};
 }
 
 footer{
@@ -161,20 +195,21 @@ footer{
   text-align: center;
   width: 100vw;
   height: 90px;
-  background-color: ${colorGray};
+  background-color: ${orange};
+  margin-top: 50px;
 
   .footer-logo{
   font-size: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${colorOrange};
-  background-color: ${colorGray};
+  color: ${gray};
+  background-color: ${orange};
   width: 55px;
   height: 55px;
   border-radius: 20%;
-  border: 1px solid ${colorGray};
-  box-shadow:0 1px 2px 2px red;
+  border: 1px solid ${orange};
+  box-shadow:0 1px 2px 2px #C71585;
   }
 }
 `
