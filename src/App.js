@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 const App = ({className}) => {
   const [input, setInput] = useState({height:'',weight:''})
- // const [display, setDisplay] = useState([])
+//  const [display, setDisplay] = useState([])
  
   const calcu = () => {
    if( input.height<250 && input.height>90 && input.weight<300 && input.weight>10 ){
@@ -39,6 +39,13 @@ const App = ({className}) => {
     <div className='bmi-title'>
      BMI result
     </div>  
+
+    <div className='content'>
+    <div></div>  
+    </div>  
+
+
+    <footer><div className='footer-logo'>BMI</div></footer>
     </div>
   )
 }
@@ -122,6 +129,36 @@ input {
   font-size: 24px;
   color: #424242;
 }
+
+.content{
+  font-size: 24px;
+}
+
+
+footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100vw;
+  height: 90px;
+  background-color: #FFD366;
+
+  .footer-logo{
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #424242;
+  background-color: #FFD366;
+  width: 55px;
+  height: 55px;
+  border-radius: 20%;
+  border: 1px solid #FFD366;
+  box-shadow:0 1px 2px 2px red;
+  }
+}
+
 `
 
 StyledApp.displayName = 'App'
