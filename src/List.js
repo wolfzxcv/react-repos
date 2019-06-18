@@ -2,12 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-const green = '#006400'
-const orange = '#FDAD0D'
-const blue = '#1E90FF'
-const red = '#FF0000'
-
-const List = ({className, color, name, height, weight, bmi, date, status, id, removeData}) => {
+const List = ({className, name, height, weight, bmi, date, status, id, removeData}) => {
   return (
     <div className={className} id={id}>
 
@@ -28,15 +23,27 @@ List.propTypes = {
 
 const StyledList = styled(List)`
  display: flex;
- flex-direction: row;
- justify-content: space-around;
- align-items: center;
- width: 1200px;
- height: 100px;
  margin: 30px auto;
- box-shadow:0 1px 2px 2px ${props=>props.color};
+ box-shadow:0 1px 2px 3px ${props=>props.color};
  font-size: 22px; 
  color: #424242;
+
+ @media (min-width: 769px){
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 1200px;
+  height: 100px;
+ }
+
+ @media (max-width: 768px){
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  height: 200px;
+  border-radius: 20px;
+ }
 
 .delete{
   color: #8B0000;

@@ -118,29 +118,61 @@ const StyledApp = styled(App)`
  flex-direction: column;
  font-family: cursive;
 
-header{
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  text-align: center;
-  width: 100vw;
-  height: 350px;
-  background-color: ${gray};
-}  
+@media (min-width: 769px){ 
+  header{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    width: 100vw;
+    height: 350px;
+    background-color: ${gray};
+  }  
 
-.logo{
-  font-size: 48px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: ${gray};
-  background-color: ${orange};
-  width: 120px;
-  height: 120px;
-  border-radius: 20%;
-  border: 1px solid ${orange};
-  box-shadow:0 1px 2px 2px blue;
+  .logo{
+    font-size: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: ${gray};
+    background-color: ${orange};
+    width: 120px;
+    height: 120px;
+    border-radius: 20%;
+    border: 1px solid ${orange};
+    box-shadow:0 1px 2px 2px blue;
+  }
+
+  .circle-result{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+  }
 }
+
+@media (max-width: 768px){
+  header{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    width: 100vw;
+    height: 500px;
+    background-color: ${gray};
+  }  
+
+  .logo{
+    display: none;
+  }
+
+  .circle-result{
+    width: 250px;
+    height: 50px;
+    border-radius: 20px;
+  }
+}
+
 
 p{
   font-size: 18px;
@@ -169,9 +201,6 @@ input {
   align-items: center;
   color: ${gray};
   background-color: ${orange};
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
   border: 1px solid ${orange};
   &:hover, &:active{
   box-shadow:0 1px 6px 3px rgba(255,196,50,0.64);
