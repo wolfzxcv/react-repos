@@ -1,3 +1,5 @@
 npm i => npm start
 
-or preview on codesandbox https://vdogv.codesandbox.io/
+preview on CodeSandbox https://vdogv.codesandbox.io/
+
+preview on CodePen https://codepen.io/nienyingchou/full/YoXNZK
