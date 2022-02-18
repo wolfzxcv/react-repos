@@ -1,25 +1,46 @@
 {
-  "name": "bmi-cal",
+  "name": "react-repos",
   "version": "0.1.0",
+  "description": "Some works in React, TypeScript and much more.",
   "private": true,
-  "homepage": "https://wolfzxcv.github.io/React-BMI-calculater",
-  "dependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1",
-    "styled-components": "^4.3.1",
-    "uuid": "^3.3.2"
-  },
+  "homepage": "http://wolfzxcv.github.io/react-repos",
   "scripts": {
     "start": "react-scripts start",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
+    "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "release": "standard-version"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.7.2",
+    "nanoid": "^3.3.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^6.2.1",
+    "react-scripts": "5.0.0",
+    "styled-components": "^5.3.3",
+    "use-media": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.6.0",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
+    "@types/react-redux": "^7.1.22",
+    "@types/styled-components": "^5.1.22",
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-react": "^7.28.0",
+    "husky": "^4.3.8",
+    "lint-staged": "^12.3.4",
+    "prettier": "^2.5.1",
+    "standard-version": "^9.3.2",
+    "typescript": "~4.4.4"
   },
   "browserslist": {
     "production": [
@@ -31,6 +52,19 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ],
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
     ]
   }
 }
