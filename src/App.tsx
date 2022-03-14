@@ -9,8 +9,8 @@ import Layout, {
 } from './components/Base/Layout';
 import theme from './styles/theme';
 import BmiCalculator from './views/BmiCalculator/BmiCalculator';
-import Counter from './views/Counter/Counter';
 import DrumMachine from './views/DrumMachine/DrumMachine';
+import NorwegianSchools from './views/NorwegianSchools/NorwegianSchools';
 
 const App = () => {
   const routes: RouteObject[] = [
@@ -28,8 +28,8 @@ const App = () => {
           element: <BmiCalculator />
         },
         {
-          path: '/counter',
-          element: <Counter />
+          path: '/NorwegianSchools',
+          element: <NorwegianSchools />
         },
         {
           path: '/courses',

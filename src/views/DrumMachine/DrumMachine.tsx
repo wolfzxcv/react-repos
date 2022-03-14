@@ -11,7 +11,7 @@ const DrumMachine: React.FC<{}> = () => {
 
   return (
     <StyledDrumMachine>
-      <StyledTitle>{display}</StyledTitle>
+      <StyledTitle title={display}>{display}</StyledTitle>
       <StyledDrums>
         {sources.map(d => (
           <DrumPads
@@ -27,26 +27,27 @@ const DrumMachine: React.FC<{}> = () => {
 };
 
 const StyledDrumMachine = styled.div`
-  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   background-color: #d2b48c;
-  font-family: cursive;
 `;
 
-const StyledTitle = styled.div`
+const StyledTitle = styled.div<{ title: string }>`
+  padding: 50px 0;
   height: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 72px;
+  font-size: ${props => (props.title.length > 8 ? '36px' : '72px')};
 `;
 
 const StyledDrums = styled.div`
+  width: 100%;
   height: 70%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-content: center;
 `;

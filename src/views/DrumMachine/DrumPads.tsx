@@ -48,8 +48,8 @@ const StyledPads = styled.div`
   justify-content: center;
   align-items: center;
   margin: 1em;
-  height: 10vh;
-  width: 5vw;
+  height: 80px;
+  width: 80px;
   border: 1px solid gray;
   background-color: #f0e68c;
 `;

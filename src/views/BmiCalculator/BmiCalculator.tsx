@@ -44,6 +44,7 @@ const BmiCalculator: React.FC<{}> = () => {
       getResult(input.name, input.height, input.weight, Number(bmi));
       await setInput(defaultInput);
     } else {
+      // eslint-disable-next-line
       alert('please enter valid name and correct number for height/weight');
     }
   };
@@ -61,16 +62,16 @@ const BmiCalculator: React.FC<{}> = () => {
 
     if (bmi < 18.5) {
       options.color = 'green';
-      options.status = 'Undervektig';
+      options.status = 'Underweight';
     } else if (bmi >= 18.5 && bmi < 25) {
       options.color = 'blue';
-      options.status = 'Normal kroppsvekt';
+      options.status = 'Healthy';
     } else if (bmi >= 25 && bmi < 30) {
       options.color = 'orange';
-      options.status = 'Overvektig';
+      options.status = 'Overweight';
     } else {
       options.color = 'red';
-      options.status = 'Fedme';
+      options.status = 'Obese';
     }
     return allData(options.color, name, height, weight, bmi, options.status);
   };
@@ -163,14 +164,11 @@ const BmiCalculator: React.FC<{}> = () => {
   );
 };
 
-const orange = '#FFD366';
-const gray = '#424242';
-
 const StyledBmiCalculator = styled.div`
   background: #fffacd;
   display: flex;
   flex-direction: column;
-  font-family: cursive;
+
   @media (min-width: 769px) {
     header {
       display: flex;
@@ -179,19 +177,19 @@ const StyledBmiCalculator = styled.div`
       text-align: center;
       width: 100vw;
       height: 350px;
-      background-color: ${gray};
+      background-color: ${props => props.theme.colors.gray};
     }
     .logo {
       font-size: 48px;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: ${gray};
-      background-color: ${orange};
+      color: ${props => props.theme.colors.gray};
+      background-color: ${props => props.theme.colors.orange};
       width: 120px;
       height: 120px;
       border-radius: 20%;
-      border: 1px solid ${orange};
+      border: 1px solid ${props => props.theme.colors.orange};
       box-shadow: 0 1px 2px 2px blue;
     }
     .circle-result {
@@ -208,8 +206,7 @@ const StyledBmiCalculator = styled.div`
       align-items: center;
       text-align: center;
       width: 100vw;
-      height: 500px;
-      background-color: ${gray};
+      background-color: ${props => props.theme.colors.gray};
     }
     .logo {
       display: none;
@@ -218,18 +215,18 @@ const StyledBmiCalculator = styled.div`
       width: 250px;
       height: 50px;
       border-radius: 20px;
+      margin: 20px 0;
     }
   }
   p {
     font-size: 18px;
-    color: ${orange};
+    color: ${props => props.theme.colors.orange};
   }
   input {
     width: 250px;
     height: 40px;
     &[type='text'] {
-      width: 100%;
-      border: 2px solid ${orange};
+      border: 2px solid ${props => props.theme.colors.orange};
       background: rgba(255, 255, 255, 0.18);
       color: #fff;
       outline: 0;
@@ -243,9 +240,9 @@ const StyledBmiCalculator = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    color: ${gray};
-    background-color: ${orange};
-    border: 1px solid ${orange};
+    color: ${props => props.theme.colors.gray};
+    background-color: ${props => props.theme.colors.orange};
+    border: 1px solid ${props => props.theme.colors.orange};
     &:hover,
     &:active {
       box-shadow: 0 1px 6px 3px rgba(255, 196, 50, 0.64);
@@ -258,7 +255,7 @@ const StyledBmiCalculator = styled.div`
     align-items: center;
     height: 100px;
     font-size: 24px;
-    color: ${gray};
+    color: ${props => props.theme.colors.gray};
   }
   footer {
     display: flex;
@@ -267,19 +264,19 @@ const StyledBmiCalculator = styled.div`
     text-align: center;
     width: 100vw;
     height: 90px;
-    background-color: ${orange};
+    background-color: ${props => props.theme.colors.orange};
     margin-top: 50px;
     .footer-logo {
       font-size: 24px;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: ${gray};
-      background-color: ${orange};
+      color: ${props => props.theme.colors.gray};
+      background-color: ${props => props.theme.colors.orange};
       width: 55px;
       height: 55px;
       border-radius: 20%;
-      border: 1px solid ${orange};
+      border: 1px solid ${props => props.theme.colors.orange};
       box-shadow: 0 1px 2px 2px #c71585;
     }
   }

@@ -1,35 +1,18 @@
 import { Link, Outlet, useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import Nav from '../Nav/Nav';
 
 const Layout = () => (
-  <div>
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/drumMachine">Drum Machine</Link>
-        </li>
-        <li>
-          <Link to="/bmiCalculator">BMI Calculator</Link>
-        </li>
-        <li>
-          <Link to="/counter">Counter</Link>
-        </li>
-        <li>
-          <Link to="/courses">Courses</Link>
-        </li>
-        <li>
-          <Link to="/nothing-here">Nothing Here</Link>
-        </li>
-      </ul>
-    </nav>
-
-    <hr />
+  <StyledLayout>
+    <Nav />
 
     <Outlet />
-  </div>
+  </StyledLayout>
 );
+
+const StyledLayout = styled.div`
+  width: 100%;
+`;
 
 export const Home = () => (
   <div>

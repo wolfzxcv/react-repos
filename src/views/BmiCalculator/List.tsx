@@ -24,11 +24,10 @@ const List: React.FC<ListProps> = ({
   date,
   status,
   id,
-  // eslint-disable-next-line
   color,
   removeData
 }: ListProps) => (
-  <StyledList id={id} style={{ boxShadow: `0 1px 2px 3px ${color}` }}>
+  <StyledList id={id} color={color}>
     <div>Name: {name}</div>
     <div>
       {height}/{weight}
@@ -42,11 +41,12 @@ const List: React.FC<ListProps> = ({
   </StyledList>
 );
 
-const StyledList = styled.div`
+const StyledList = styled.div<{ color: string }>`
  display: flex;
  margin: 30px auto;
  font-size: 22px; 
- color: #424242;
+ box-shadow:0 1px 2px 3px ${props => props.color};
+ color: ${props => props.theme.colors.gray};
  @media (min-width: 769px){
   flex-direction: row;
   justify-content: space-around;
@@ -63,7 +63,7 @@ const StyledList = styled.div`
   border-radius: 20px;
  }
 .delete{
-  color: #8B0000;
+  color: ${props => props.theme.colors.darkRed};
   font-weight: 600;
 } 
 } 
