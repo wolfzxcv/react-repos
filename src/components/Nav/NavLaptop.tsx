@@ -50,6 +50,9 @@ const StyledNavLaptop = styled.nav`
         a {
           text-decoration: none;
           color: ${props => props.theme.colors.white};
+          &:hover {
+            color: ${props => props.theme.colors.orange};
+          }
         }
         .active {
           color: ${props => props.theme.colors.darkRed};

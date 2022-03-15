@@ -8,9 +8,9 @@ import Layout, {
   NoMatch
 } from './components/Base/Layout';
 import theme from './styles/theme';
-import BmiCalculator from './views/BmiCalculator/BmiCalculator';
-import DrumMachine from './views/DrumMachine/DrumMachine';
-import NorwegianSchools from './views/NorwegianSchools/NorwegianSchools';
+import BmiCalculator from './views/BmiCalculator';
+import DrumMachine from './views/DrumMachine';
+import NorwegianSchools from './views/NorwegianSchools';
 
 const App = () => {
   const routes: RouteObject[] = [

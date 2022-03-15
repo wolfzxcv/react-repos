@@ -10,7 +10,12 @@ This repo integrates some of my previous React side projects.
 
 ## Other sites to see these projects
 
-| Name           | Source                                                 | Source                                       |
-| -------------- | ------------------------------------------------------ | -------------------------------------------- |
-| Drum Machine   | [CodePen](https://codepen.io/nienyingchou/full/rgReZj) |                                              |
-| BMI calculator | [CodePen](https://codepen.io/nienyingchou/full/YoXNZK) | [CodeSandbox](https://vdogv.codesandbox.io/) |
+| Name                             | Source                                                  | Source                                |
+| -------------------------------- | ------------------------------------------------------- | ------------------------------------- |
+| Drum Machine                     | [CodePen](https://codepen.io/nienyingchou/full/rgReZj)  |                                       |
+| BMI calculator                   | [CodePen](https://codepen.io/nienyingchou/full/YoXNZK)  | [CodeSandbox](https://vdogv.csb.app/) |
+| Norwegian Schools                |                                                         | [CodeSandbox](https://662b8.csb.app/) |
+| Responsive NavBar and SideDrawer |                                                         | [CodeSandbox](https://g56t2.csb.app/) |
+| Kaohsiung Travel Guide           |                                                         | [CodeSandbox](https://ove31.csb.app/) |
+| Todo list                        | [CodePen](https://codepen.io/nienyingchou/full/VJZobX)  | [CodeSandbox](https://jum8z.csb.app/) |
+| Calendar with locales            | [CodePen](https://codepen.io/nienyingchou/full/bGRqQpJ) |                                       |

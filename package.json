@@ -6,7 +6,7 @@
   "homepage": "http://wolfzxcv.github.io/react-repos",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "rimraf build && react-scripts build",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "release": "standard-version"
@@ -16,11 +16,11 @@
     "nanoid": "^3.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",
-    "styled-components": "^5.3.3",
-    "use-media": "^1.4.0"
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {
     "@types/node": "^14.6.0",

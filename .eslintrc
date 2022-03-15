@@ -41,7 +41,13 @@
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-static-element-interactions": "off",
     "no-console": "off",
-    "no-param-reassign": "warn",
+    "no-param-reassign": [
+      "warn",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": ["state", "A", "eachData"]
+      }
+    ],
     "no-promise-executor-return": "warn",
     "no-use-before-define": "off",
     "react/function-component-definition": [

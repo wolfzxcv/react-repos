@@ -30,7 +30,7 @@ const OptionsM = styled.div<{ drawerOpen: Boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
+  position: fixed;
   right: 0px;
   height: calc(95% - 65px);
   top: 70px;
