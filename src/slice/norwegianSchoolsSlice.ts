@@ -1,9 +1,54 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 // eslint-disable-next-line import/no-cycle
 import { RootState } from '../app/store';
+import enheterJson from '../views/NorwegianSchools/enheter.json';
+
+type IEnheterJson = {
+  enheter: IEnhete[];
+};
+
+export type IFylke = {
+  Fylkesnr: string;
+  Navn: string;
+  OrgNr: string;
+  OrgNrFylkesmann: string;
+};
+
+export type IEnhete = {
+  EndretDato: string;
+  Epost: string;
+  ErAktiv: boolean;
+  ErGrunnSkole: boolean;
+  ErOffentligSkole: boolean;
+  ErPrivatSkole: boolean;
+  ErSkole: boolean;
+  ErSkoleEier: boolean;
+  ErVideregaaendeSkole: boolean;
+  FulltNavn: string;
+  FylkeNr: string;
+  Karakteristikk: string;
+  KommuneNavn: string;
+  KommuneNr: string;
+  NSRId: number;
+  Navn: string;
+  OrgNr: string;
+  VisesPaaWeb: boolean;
+  isFavorite: boolean;
+};
+
+type IMergeData = {
+  OrgNr: IEnhete['OrgNr'];
+  isFavorite: boolean;
+  Navn: string;
+  FulltNavn: IEnhete['FulltNavn'];
+  Epost: IEnhete['Epost'];
+  Karakteristikk: IEnhete['Karakteristikk'];
+  ErOffentligSkole: IEnhete['ErOffentligSkole'];
+  ErGrunnSkole: IEnhete['ErGrunnSkole'];
+};
 
 export interface NorwegianSchoolsState {
-  mergeData: Array<any>;
+  mergeData: IMergeData[];
   select: string;
   input: string;
   page: number;
@@ -20,29 +65,13 @@ const initialState: NorwegianSchoolsState = {
   showList: false
 };
 
-type IFylke = {
-  Fylkesnr: string;
-  Navn: string;
-  OrgNr: string;
-  OrgNrFylkesmann: string;
-};
-
-type IEnhete = {
-  FylkeNr?: string;
-};
-
-type IMergeData = IEnhete & {
-  Navn: string;
-  isFavorite: boolean;
-};
-
 export const fetchSchoolData = createAsyncThunk(
   'norwegianSchools/fetchSchoolData',
   async () => {
     try {
-      console.log('fetchSchoolData');
-      const responseData = await fetch('https://data-nsr.udir.no/enheter');
-      const data: IMergeData[] = await responseData.json();
+      const { enheter } = enheterJson as IEnheterJson;
+
+      const data = enheter;
 
       const responseCounty = await fetch('https://data-nsr.udir.no/fylker');
       const county: IFylke[] = await responseCounty.json();
@@ -52,11 +81,22 @@ export const fetchSchoolData = createAsyncThunk(
         const finder = county.find(B => A.FylkeNr === B.Fylkesnr) || undefined;
         A.Navn = finder?.Navn || '';
         A.isFavorite = false;
-        return A;
+        return {
+          OrgNr: A.OrgNr,
+          isFavorite: A.isFavorite,
+          Navn: A.Navn,
+          FulltNavn: A.FulltNavn,
+          Epost: A.Epost,
+          Karakteristikk: A.Karakteristikk,
+          ErOffentligSkole: A.ErOffentligSkole,
+          ErGrunnSkole: A.ErGrunnSkole
+        };
       });
+
       return allData;
     } catch (e) {
       console.log(e);
+
       return [];
     }
   }
@@ -91,6 +131,7 @@ export const norwegianSchoolsSlice = createSlice({
       state,
       action: PayloadAction<NorwegianSchoolsState['mergeData']>
     ) => {
+      console.log('setMergeData');
       state.mergeData = action.payload;
     },
     setShowList: (
@@ -99,6 +140,11 @@ export const norwegianSchoolsSlice = createSlice({
     ) => {
       state.showList = action.payload;
     }
+  },
+  extraReducers: builder => {
+    builder.addCase(fetchSchoolData.fulfilled, (state, action) => {
+      state.mergeData = action.payload;
+    });
   }
 });
 

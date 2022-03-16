@@ -24,6 +24,7 @@ const MainContent: React.FC<{}> = () => {
   // get county name as drop-down list
   const filterCountyList = norwegianSchools.mergeData.reduce(
     (eachData, countyName) => {
+      // @ts-ignore
       eachData[countyName.Navn] = countyName.FylkeNr;
       return eachData;
     },
