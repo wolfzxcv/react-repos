@@ -14,15 +14,10 @@ const StyledLayout = styled.div`
   width: 100%;
 `;
 
-export const Home = () => (
-  <div>
-    <h2>Home</h2>
-  </div>
-);
-
 export const Courses = () => (
   <div>
     <h2>Courses</h2>
+    <span>Example from React Router</span>
     <Outlet />
   </div>
 );
@@ -66,14 +61,5 @@ export const Course = () => {
 function capitalizeString(s: string): string {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
-
-export const NoMatch = () => (
-  <div>
-    <h2>It looks like you&apos;re lost...</h2>
-    <p>
-      <Link to="/">Go to the home page</Link>
-    </p>
-  </div>
-);
 
 export default Layout;

@@ -27,6 +27,7 @@ const DrumMachine: React.FC<{}> = () => {
 };
 
 const StyledDrumMachine = styled.div`
+  min-height: 600px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

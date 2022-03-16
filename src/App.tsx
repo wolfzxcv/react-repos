@@ -3,13 +3,13 @@ import { ThemeProvider } from 'styled-components';
 import Layout, {
   Course,
   Courses,
-  CoursesIndex,
-  Home,
-  NoMatch
+  CoursesIndex
 } from './components/Base/Layout';
 import theme from './styles/theme';
 import BmiCalculator from './views/BmiCalculator';
 import DrumMachine from './views/DrumMachine';
+import Home from './views/Home';
+import NoMatch from './views/NoMatch';
 import NorwegianSchools from './views/NorwegianSchools';
 
 const App = () => {
