@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/react-repos/static/css/main.d3bab368.css",
+    "main.js": "/react-repos/static/js/main.85d11856.js",
+    "static/media/ride.wav": "/react-repos/static/media/ride.51f8ddcbab39b48b8b40.wav",
+    "static/media/floor-tom.wav": "/react-repos/static/media/floor-tom.74a40ac270dd4f4e3772.wav",
+    "static/media/china.wav": "/react-repos/static/media/china.8bae94add0cdd2458255.wav",
+    "static/media/crash.wav": "/react-repos/static/media/crash.7981aa8e5aa864858646.wav",
+    "static/media/tom-tom2.wav": "/react-repos/static/media/tom-tom2.7121ada8d95dec3625d7.wav",
+    "static/media/tom-tom1.wav": "/react-repos/static/media/tom-tom1.fd241215fa008dd017f7.wav",
+    "static/media/kick.mp3": "/react-repos/static/media/kick.3c578201f16fd5e80aa4.mp3",
+    "static/media/snare.mp3": "/react-repos/static/media/snare.972d828b4762167e8915.mp3",
+    "static/media/hi-hat.mp3": "/react-repos/static/media/hi-hat.0b159bd307a31937b138.mp3",
+    "index.html": "/react-repos/index.html",
+    "main.d3bab368.css.map": "/react-repos/static/css/main.d3bab368.css.map",
+    "main.85d11856.js.map": "/react-repos/static/js/main.85d11856.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d3bab368.css",
+    "static/js/main.85d11856.js"
+  ]
+}
